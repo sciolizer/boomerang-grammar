@@ -1,0 +1,32 @@
+{
+  "name": "boomerang-grammar",
+  "version": "1.0.0",
+  "description": "Define parsers and pretty-printers in a single grammar",
+  "main": "index.js",
+  "scripts": {
+    "test": "./build.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sciolizer/boomerang-grammar.git"
+  },
+  "keywords": [
+    "parse",
+    "print",
+    "grammar",
+    "recursive",
+    "descent"
+  ],
+  "author": "Joshua Ball",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sciolizer/boomerang-grammar/issues"
+  },
+  "homepage": "https://github.com/sciolizer/boomerang-grammar",
+  "devDependencies": {
+    "livescript": "0.0.1"
+  },
+  "dependencies": {
+    "prelude-ls": "^1.1.1"
+  }
+}
