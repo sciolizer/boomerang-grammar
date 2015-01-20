@@ -333,6 +333,33 @@ describe \any -> ``it``
     pt.error-expect \black, <[purple medallion]>
     pt.done
 
+describe \eof -> ``it``
+  .. 'should parse alone' ->
+    iterator = boomerang.parse(boomerang.eof, [])
+    pt = new Parse-tester iterator
+    pt.success [], []
+    pt.done
+  .. 'should produce error when more left' ->
+    iterator = boomerang.parse(boomerang.eof, <[wonderful]>)
+    pt = new Parse-tester iterator
+    pt.error-expect \<eof>
+    pt.done
+  .. 'should parse successfully when preceeded by hello' ->
+    iterator = boomerang.parse([\hello, boomerang.eof], <[hello]>)
+    pt = new Parse-tester iterator
+    pt.success [], []
+    pt.done
+  .. 'should fail parsing if hello not there' ->
+    iterator = boomerang.parse([\hello, boomerang.eof], [])
+    pt = new Parse-tester iterator
+    pt.error-expect \hello
+    pt.done
+  .. 'should fail if more words remain' ->
+    iterator = boomerang.parse([\hello, boomerang.eof], <[hello world]>)
+    pt = new Parse-tester iterator
+    pt.error-expect \<eof>
+    pt.done
+
 class Parse-tester
   (@iterator) ->
   error-expect: (expected, strings) ->

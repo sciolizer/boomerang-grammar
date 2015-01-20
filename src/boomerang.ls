@@ -188,9 +188,28 @@ recursive = (boomerang-supplier) ->
   print: (stack) ->*
     yield from print(boomerang-supplier(), stack)
 
+eof =
+  parse: (strings) ->*
+    if strings.length == 0
+      yield do
+        strings: strings
+        stackModifier: (stack) -> stack
+    else
+      yield do
+        strings: strings
+        error: true
+        expected: "<eof>"
+  debug: ->
+    "<eof>"
+  print: (stack) ->*
+    yield do
+      strings: []
+      stack: stack
+
 module.exports =
   any: any
   either: either
+  eof: eof
   debug: debug
   miniParse: mini-parse
   nop: nop
